@@ -21,6 +21,8 @@ class GameDashboard extends Component {
   handleStartGame = () => this.subscription.startGame()
 
   handleClue = (cluedHand, clue) => this.subscription.giveClue(cluedHand.id, clue)
+  
+  handlePlay = (playHand, cardId) => this.subscription.playCard(playHand.id, cardId)
 
   componentDidMount() {
     const { setGame, fetchingGame, fetchingGameFailure } = this.props
@@ -66,6 +68,15 @@ class GameDashboard extends Component {
           clue: clue
         })
       },
+      
+      playCard(handId, cardId) {
+        debugger;
+        return this.perform('play_card', {
+          game_id: self.props.game.id,
+          hand_id: handId,
+          card_id: cardId
+        })
+      },
 
       disconnected() { 
         console.log("disconnected: action cable" )
@@ -82,6 +93,7 @@ class GameDashboard extends Component {
           <ActiveGame
             game={this.props.game}
             handleClue={this.handleClue}
+            handlePlay={this.handlePlay}
             currentUser={this.props.currentUser}
             currentPlayer={this.props.currentPlayer}
           />

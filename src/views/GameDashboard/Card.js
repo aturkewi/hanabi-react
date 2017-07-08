@@ -12,7 +12,7 @@ class Card extends Component{
   handleClick = () => this.setState({hideOptions: !this.state.hideOptions})
 
   render(){
-    const { card, isCurrentUser, isCurrentPlayer, onClueClick, isMyTurn } = this.props;
+    const { card, isCurrentUser, isCurrentPlayer, onClueClick, onPlayClick, isMyTurn } = this.props;
     let buttons = '';
     if(isMyTurn){
       if(!isCurrentUser){
@@ -32,7 +32,7 @@ class Card extends Component{
         buttons = (<div>
           <button
             hidden={this.state.hideOptions}
-            onClick={() => console.log('Play card')}>
+            onClick={() => onPlayClick(card.id)}>
             Play Card
           </button>
           <button

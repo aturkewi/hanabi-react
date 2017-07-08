@@ -31,6 +31,7 @@ const ActiveGame = (props) => {
                 isCurrentUser={props.currentUser.id === hand.user.id}
                 hand={hand}
                 handleClue={props.handleClue}
+                handlePlay={props.handlePlay}
               />
             </li>
           ))}

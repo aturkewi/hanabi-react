@@ -5,6 +5,7 @@ import Card from './Card';
 const Hand = ({ isCurrentPlayer, isCurrentUser, hand, handleClue, handleDiscard, handlePlay, isMyTurn }) => {
 
   const onClueClick = clue => handleClue(hand, clue)
+  const onPlayClick = cardId => handlePlay(hand, cardId)
 
   return (
     <div className={isCurrentPlayer ? "current-player" : "not-current-player"}>
@@ -18,7 +19,7 @@ const Hand = ({ isCurrentPlayer, isCurrentUser, hand, handleClue, handleDiscard,
             isCurrentUser={isCurrentUser}
             isCurrentPlayer={isCurrentPlayer}
             handleDiscard={handleDiscard}
-            handlePlay={handlePlay}
+            onPlayClick={onPlayClick}
             onClueClick={onClueClick}
           />
         )}
