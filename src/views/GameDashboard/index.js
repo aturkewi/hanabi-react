@@ -10,7 +10,7 @@ import GameSetup from './GameSetup';
 import ActiveGame from './ActiveGame';
 
 const setCurrentPlayer = game => {
-  const hand = game.hands.find(hand => hand.id === game.current_player_id)
+  const hand = game.hands.find(hand => hand.user.id === game.current_player_id)
   return hand ? hand.user : { username: '' }
 }
 
