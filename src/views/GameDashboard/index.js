@@ -70,7 +70,6 @@ class GameDashboard extends Component {
       },
       
       playCard(handId, cardId) {
-        debugger;
         return this.perform('play_card', {
           game_id: self.props.game.id,
           hand_id: handId,
