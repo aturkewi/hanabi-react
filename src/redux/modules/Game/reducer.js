@@ -16,7 +16,7 @@ const initialState = {
     miss_counter: 0,
     status: 'loading'
   },
-  status: 'Fetching game',
+  status: '',
   actions: {}
 }
 
@@ -25,10 +25,7 @@ export default (state = initialState, action) => {
   switch(action.type) {
 
     case 'FETCHING_GAME':
-      return { 
-        ...state,
-        status: 'Fetching games' 
-      };
+      return {...initialState, status: "Fetching game"};
 
     case 'FETCH_GAME_FAILURE':
       return { 
