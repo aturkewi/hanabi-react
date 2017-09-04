@@ -21,19 +21,21 @@ class Navbar extends Component {
     const { isAuthenticated } = this.props
 
     return (
-      <div>
-        {isAuthenticated ?
-          <div>
-            <NavLink to='/games'>Games</NavLink>
-            <button onClick={this.handleLogout}>Logout</button>
-          </div>
-          : 
-          <div>
-            <NavLink to='/login'>Login</NavLink>
-            <NavLink to='/signup'>Signup</NavLink>
-          </div>
-        }
-      </div>
+      <nav className="uk-navbar-container" data-uk-navbar>
+        <div className="uk-navbar-left">
+          {isAuthenticated ?
+            <ul className="uk-navbar-nav">
+              <NavLink activeClassName="uk-active" to='/games'><li>Games</li></NavLink>
+              <li><span onClick={this.handleLogout}>Logout</span></li>
+            </ul>
+            : 
+            <ul className="uk-navbar-nav">
+              <NavLink activeClassName="uk-active" to='/login'>Login</NavLink>
+              <NavLink activeClassName="uk-active" to='/signup'>Signup</NavLink>
+            </ul>
+          }
+        </div>
+      </nav>
     );
   }
 }

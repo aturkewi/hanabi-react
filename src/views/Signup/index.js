@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signup } from '../../redux/modules/Auth/actions';
 import SignupForm from './SignupForm';
@@ -13,9 +14,12 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Create an Account</h3>
-        <SignupForm onSubmit={this.handleSignup} />
+      <div className="uk-flex uk-flex-center">
+        <div className="uk-text-center">
+          <SignupForm onSubmit={this.handleSignup} />
+          <p>Already have an account?</p>
+          <NavLink to="/login">Login here</NavLink>
+        </div>
       </div>
     );
   }

@@ -21,12 +21,12 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Hanabi</h1>
-        <h3>Login</h3>
-        <LoginForm onSubmit={this.handleLogin} />
-        <p>Don't have an account?</p>
-        <NavLink to="/signup">Create new account</NavLink>
+      <div className="uk-flex uk-flex-center">
+        <div className="uk-text-center">
+          <LoginForm onSubmit={this.handleLogin} />
+          <p>Don't have an account?</p>
+          <NavLink to="/signup">Create new account</NavLink>
+        </div>
       </div>
     )
   }

@@ -46,14 +46,16 @@ class App extends Component {
       <Router>
         <div>
           <Navbar isAuthenticated={isAuthenticated} logout={logout} />
-          <Switch>
-            <MatchAuthenticated path="/" exact component={Games} {...authProps} />
-            <MatchAuthenticated path="/games/:gameId" exact component={GameDashboard} {...authProps} />
-            <MatchAuthenticated path="/games" exact component={Games} {...authProps} />
-            <RedirectUnauthenticated path="/login" exact component={Login} {...authProps} />
-            <RedirectUnauthenticated path="/signup" exact component={Signup} {...authProps} />
-            <Route component={NotFound} />
-          </Switch>
+          <div className="uk-container">
+            <Switch>
+              <MatchAuthenticated path="/" exact component={Games} {...authProps} />
+              <MatchAuthenticated path="/games/:gameId" exact component={GameDashboard} {...authProps} />
+              <MatchAuthenticated path="/games" exact component={Games} {...authProps} />
+              <RedirectUnauthenticated path="/login" exact component={Login} {...authProps} />
+              <RedirectUnauthenticated path="/signup" exact component={Signup} {...authProps} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
         </div>
       </Router>
     )
