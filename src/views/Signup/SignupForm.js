@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Form, Button } from 'semantic-ui-react';
 import FormInput from '../../components/FormInput';
 
 class SignupForm extends Component {

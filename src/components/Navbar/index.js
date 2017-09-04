@@ -1,24 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react'
-import { StyleSheet, css } from 'aphrodite';
-
-const styles = StyleSheet.create({
-
-    link: {
-      ':hover': {
-        background: 'rgba(255,255,255,.15)',
-      }
-    },
-
-    logout: {
-      cursor: 'pointer',
-      ':hover': {
-        background: 'rgba(255,255,255,.15)',
-      }
-    }
-});
 
 type Props = {
   isAuthenticated: boolean,
@@ -39,41 +21,17 @@ class Navbar extends Component {
     const { isAuthenticated } = this.props
 
     return (
-      <div className="navbar">
+      <div>
         {isAuthenticated ?
-          <Menu inverted style={{borderRadius: '0'}}>
-            <NavLink 
-              to='/games'
-              className={css(styles.link)}
-              activeStyle={{
-                background: 'rgba(255,255,255,.15)',
-              }}
-            ><Menu.Item>Games</Menu.Item></NavLink>
-            <Menu.Item 
-              className={css(styles.logout)}
-              onClick={this.handleLogout}
-            >Logout</Menu.Item>
-          </Menu>
-
+          <div>
+            <NavLink to='/games'>Games</NavLink>
+            <button onClick={this.handleLogout}>Logout</button>
+          </div>
           : 
-
-          <Menu inverted>
-            <NavLink 
-              to='/login'
-              className={css(styles.link)}
-              activeStyle={{
-                background: 'rgba(255,255,255,.15)',
-              }}
-            ><Menu.Item>Login</Menu.Item></NavLink>
-
-            <NavLink 
-              to='/signup'
-              className={css(styles.link)}
-              activeStyle={{
-                background: 'rgba(255,255,255,.15)',
-              }}
-            ><Menu.Item>Signup</Menu.Item></NavLink>
-          </Menu>
+          <div>
+            <NavLink to='/login'>Login</NavLink>
+            <NavLink to='/signup'>Signup</NavLink>
+          </div>
         }
       </div>
     );
