@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Form, Button } from 'semantic-ui-react';
 import FormInput from '../../components/FormInput';
 
 type Props = {
@@ -20,31 +19,27 @@ class LoginForm extends Component {
     const { handleSubmit, submitting } = this.props;
 
     return (
-      <div className="login_form">
-        <Form onSubmit={handleSubmit(this.handleSubmit)}>
-          <Form.Field>
-            <Field 
-              name="username"
-              label="Username"
-              type="text"
-              placeholder="Username"
-              component={FormInput} />
-          </Form.Field>
-          <Form.Field>
-            <Field 
-              name="password"
-              label="Password"
-              type="password"
-              placeholder="Password"
-              component={FormInput} />
-          </Form.Field>
-          <Button
+      <div>
+        <form onSubmit={handleSubmit(this.handleSubmit)}>
+          <Field 
+            name="username"
+            label="Username"
+            type="text"
+            placeholder="Username"
+            component={FormInput} />
+          <Field 
+            name="password"
+            label="Password"
+            type="password"
+            placeholder="Password"
+            component={FormInput} />
+          <button
             type="submit"
             disabled={submitting}
           >
             {submitting ? 'SIGNING IN...' : 'SIGN IN'}
-          </Button>
-        </Form>
+          </button>
+        </form>
       </div>
     )
   }

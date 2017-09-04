@@ -1,12 +1,11 @@
 import React from 'react';
 import Card from './Card'
 import Hand from './Hand'
-import './Hand.css'
 
 const ActiveGame = (props) => {
 
   return(
-    <div className='active-game'>
+    <div>
       <div>
         <h2>The state of affairs</h2>
         <ul>

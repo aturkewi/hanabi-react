@@ -21,7 +21,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="login">
+      <div>
         <h1>Hanabi</h1>
         <h3>Login</h3>
         <LoginForm onSubmit={this.handleLogin} />

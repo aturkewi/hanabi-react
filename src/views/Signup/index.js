@@ -13,7 +13,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="signup">
+      <div>
         <h3>Create an Account</h3>
         <SignupForm onSubmit={this.handleSignup} />
       </div>

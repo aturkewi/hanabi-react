@@ -11,39 +11,33 @@ class SignupForm extends Component {
     const { handleSubmit, submitting } = this.props;
 
     return (
-      <div className="signup_form">
-        <Form onSubmit={handleSubmit(this.handleSubmit)}>
-          <Form.Field>
-            <Field 
-              name="username"
-              label="Username"
-              type="text"
-              placeholder="Username"
-              component={FormInput} />
-          </Form.Field>
-          <Form.Field>
-            <Field 
-              name="email"
-              label="Email"
-              type="email"
-              placeholder="Email"
-              component={FormInput} />
-          </Form.Field>
-          <Form.Field>
-            <Field 
-              name="password"
-              label="Password"
-              type="password"
-              placeholder="Password"
-              component={FormInput} />
-          </Form.Field>
-          <Button
+      <div>
+        <form onSubmit={handleSubmit(this.handleSubmit)}>
+          <Field 
+            name="username"
+            label="Username"
+            type="text"
+            placeholder="Username"
+            component={FormInput} />
+          <Field 
+            name="email"
+            label="Email"
+            type="email"
+            placeholder="Email"
+            component={FormInput} />
+          <Field 
+            name="password"
+            label="Password"
+            type="password"
+            placeholder="Password"
+            component={FormInput} />
+          <button
             type="submit"
             disabled={submitting}
           >
             {submitting ? 'CREATING ACCOUNT...' : 'CREATE ACCOUNT'}
-          </Button>
-        </Form>
+          </button>
+        </form>
       </div>
     )
   }

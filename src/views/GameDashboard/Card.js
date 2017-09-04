@@ -14,8 +14,8 @@ class Card extends Component{
   render(){
     const { card, isCurrentUser, isCurrentPlayer, onClueClick, onPlayClick, isMyTurn } = this.props;
     let buttons = '';
-    if(isMyTurn){
-      if(!isCurrentUser){
+    if (isMyTurn) {
+      if (!isCurrentUser) {
         buttons = ( <div>
           <button
             hidden={this.state.hideOptions}
@@ -28,7 +28,7 @@ class Card extends Component{
             Number Clue
           </button>
         </div>)
-      }else{
+      } else {
         buttons = (<div>
           <button
             hidden={this.state.hideOptions}
@@ -46,7 +46,7 @@ class Card extends Component{
 
     return (
       <div key={this.props.index} onClick={this.handleClick}>
-        <span className="font-light">
+        <span>
           {isCurrentUser ?
             `${card.display_color ? card.color : '****'} ${card.display_number ? card.number : '**'}`
             :

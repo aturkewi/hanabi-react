@@ -5,15 +5,15 @@ const GameSetup = (props) => {
     const userInGame = props.hands.find(h =>{
       return h.user.id === props.currentUser.id
     })
-    if(userInGame){
+    if (userInGame) {
       return ''
-    }else{
+    } else {
       return <button onClick={props.handleJoin}>Join Game!</button>
     }
   }
   return (
-    <div className='player-setup'>
-      <div className='player-list'>
+    <div>
+      <div>
         <h2>Current Players</h2>
         <ul>
           {props.hands.map(h => (
@@ -24,12 +24,12 @@ const GameSetup = (props) => {
         </ul>
       </div>
       
-      <div className='join-game'>
+      <div>
         {joinButton()}
       </div>
       
-      <div className='start-game'>
-        { props.hands.length > 1 ? <button onClick={props.handleStart}>Start Game</button> : ''}
+      <div>
+        {props.hands.length > 1 ? <button onClick={props.handleStart}>Start Game</button> : ''}
       </div>
     </div>
   )

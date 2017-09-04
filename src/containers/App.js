@@ -5,7 +5,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { authenticate, authenticationFailure, logout } from '../redux/modules/Auth/actions';
 import Navbar from '../components/Navbar';
@@ -45,19 +44,17 @@ class App extends Component {
 
     return (
       <Router>
-        <Container fluid>
-          <div className="app">
-            <Navbar isAuthenticated={isAuthenticated} logout={logout} />
-            <Switch>
-              <MatchAuthenticated path="/" exact component={Games} {...authProps} />
-              <MatchAuthenticated path="/games/:gameId" exact component={GameDashboard} {...authProps} />
-              <MatchAuthenticated path="/games" exact component={Games} {...authProps} />
-              <RedirectUnauthenticated path="/login" exact component={Login} {...authProps} />
-              <RedirectUnauthenticated path="/signup" exact component={Signup} {...authProps} />
-              <Route component={NotFound} />
-            </Switch>
-          </div>
-        </Container>
+        <div>
+          <Navbar isAuthenticated={isAuthenticated} logout={logout} />
+          <Switch>
+            <MatchAuthenticated path="/" exact component={Games} {...authProps} />
+            <MatchAuthenticated path="/games/:gameId" exact component={GameDashboard} {...authProps} />
+            <MatchAuthenticated path="/games" exact component={Games} {...authProps} />
+            <RedirectUnauthenticated path="/login" exact component={Login} {...authProps} />
+            <RedirectUnauthenticated path="/signup" exact component={Signup} {...authProps} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
       </Router>
     )
   }

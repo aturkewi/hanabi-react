@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from './Card';
-// import './Player.css'
 
 const Hand = ({ isCurrentPlayer, isCurrentUser, hand, handleClue, handleDiscard, handlePlay, isMyTurn }) => {
 
@@ -8,13 +7,13 @@ const Hand = ({ isCurrentPlayer, isCurrentUser, hand, handleClue, handleDiscard,
   const onPlayClick = cardId => handlePlay(hand, cardId)
 
   return (
-    <div className={isCurrentPlayer ? "current-player" : "not-current-player"}>
+    <div>
       <h3>{hand.user.username}</h3>
-      <ul className="cards">
-        {hand.cards.map((c, i)=>
+      <ul>
+        {hand.cards.map((card)=>
           <Card
-            card={c}
-            key={i}
+            card={card}
+            key={card.id}
             isMyTurn={isMyTurn}
             isCurrentUser={isCurrentUser}
             isCurrentPlayer={isCurrentPlayer}
