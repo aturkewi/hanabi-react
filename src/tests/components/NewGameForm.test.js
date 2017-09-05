@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { NewGameForm } from '../../views/Games/NewGameForm';
+import { NewGameForm } from '../../views/GamesView/NewGameForm';
 
 describe('NewGameForm', () => {
     let wrapper;

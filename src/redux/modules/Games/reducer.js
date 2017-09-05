@@ -1,6 +1,6 @@
 const initialState = {
   list: [],
-  status: 'Fetching Games'
+  status: ''
 }
 
 export default (state = initialState, action) => {
@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
     case 'FETCHING_GAMES':
       return { 
         ...state,
-        status: 'Fetching games' 
+        status: 'Fetching Games' 
       };
 
     case 'FETCH_GAMES_FAILURE':

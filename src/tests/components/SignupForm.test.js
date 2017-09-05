@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import SignupForm from '../SignupForm';
+import SignupForm from '../../views/SignupView/SignupForm';
 
 const middlewares = [ thunk ]; 
 const mockStore = configureMockStore(middlewares);
@@ -28,21 +28,20 @@ describe('SignupForm', () => {
         <SignupForm {...props} />
       </Provider>
     );
-  })
+  });
 
   it('renders without crashing', () => {
     expect(wrapper).toBeDefined();
-  })
+  });
 
-  it('wraps content in a div with .signup_form class', () => {
-    expect(wrapper.find('div.signup_form').length).toEqual(1);
-  })
+  it('wraps content in a form.uk-margin-medium-top', () => {
+    expect(wrapper.find('form.uk-margin-medium-top').length).toEqual(1);
+  });
 
   it('renders 3 Field components for users username, email & password confirmation', () => {
     const fields = wrapper.find('Field')
     expect(fields.length).toEqual(3);
     const params = ['username', 'email', 'password'];
     fields.forEach((f, i) => expect(f.props().name).toEqual(params[i]));
-  })
-  
-})
+  });
+});

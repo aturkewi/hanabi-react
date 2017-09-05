@@ -10,42 +10,40 @@ class SignupForm extends Component {
     const { handleSubmit, submitting } = this.props;
 
     return (
-      <div>
-        <form className="uk-margin-medium-top" onSubmit={handleSubmit(this.handleSubmit)}>
-          <fieldset className="uk-fieldset">
-            <legend className="uk-legend">Signup</legend>  
-            <div className="uk-margin">
-              <Field 
-                name="username"
-                label="Username"
-                type="text"
-                placeholder="Username"
-                component={FormInput} />
-            </div>
-            <div className="uk-margin">
-              <Field 
-                name="email"
-                label="Email"
-                type="email"
-                placeholder="Email"
-                component={FormInput} />
-            </div>
-            <div className="uk-margin">
-              <Field 
-                name="password"
-                label="Password"
-                type="password"
-                placeholder="Password"
-                component={FormInput} />
-            </div>
-            <button
-              className="uk-button uk-button-primary uk-button-small"
-              type="submit"
-              disabled={submitting}
-            >{submitting ? 'CREATING ACCOUNT...' : 'CREATE ACCOUNT'}</button>
-          </fieldset>
-        </form>
-      </div>
+      <form className="uk-margin-medium-top" onSubmit={handleSubmit(this.handleSubmit)}>
+        <fieldset className="uk-fieldset">
+          <legend className="uk-legend">Signup</legend>  
+          <div className="uk-margin">
+            <Field 
+              name="username"
+              label="Username"
+              type="text"
+              placeholder="Username"
+              component={FormInput} />
+          </div>
+          <div className="uk-margin">
+            <Field 
+              name="email"
+              label="Email"
+              type="email"
+              placeholder="Email"
+              component={FormInput} />
+          </div>
+          <div className="uk-margin">
+            <Field 
+              name="password"
+              label="Password"
+              type="password"
+              placeholder="Password"
+              component={FormInput} />
+          </div>
+          <button
+            className="uk-button uk-button-primary uk-button-small"
+            type="submit"
+            disabled={submitting}
+          >{submitting ? 'CREATING ACCOUNT...' : 'CREATE ACCOUNT'}</button>
+        </fieldset>
+      </form>
     )
   }
 }
