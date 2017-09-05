@@ -11,9 +11,27 @@ export class NewGameForm extends Component {
             player_count: ''
         }
     }
+
+    handleOnChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleOnSubmit = event => {
+        event.preventDefault();
+        const game = Object.assign({}, this.state);
+        this.props.createGame(game)
+        this.setState({
+            title: '', 
+            player_count: ''
+        });
+    }
+
     render() {
         return (
-            <form className="uk-margin-medium-top">
+            <form className="uk-margin-medium-top" onSubmit={this.handleOnSubmit}>
                 <fieldset className="uk-fieldset">
                     <div className="uk-margin">
                         <label className="uk-form-label" htmlFor="title">Game Room Name
@@ -23,6 +41,8 @@ export class NewGameForm extends Component {
                                 className="uk-input" 
                                 name="title"
                                 placeholder="Game Room Name"
+                                value={this.state.title}
+                                onChange={this.handleOnChange}
                             />
                         </div>
                     </div>
@@ -34,6 +54,8 @@ export class NewGameForm extends Component {
                                 className="uk-input" 
                                 name="player_count"
                                 placeholder="2-5 Players"
+                                value={this.state.player_count}
+                                onChange={this.handleOnChange}
                             />
                         </div>
                     </div>

@@ -135,4 +135,47 @@ describe('NewGameForm', () => {
             expect(button.text()).toEqual('Create Game Room');
         });
     });
+
+    describe('contains events', () => {
+        let titleInput;
+        let playerCountInput;
+        let form;
+
+        beforeEach(() => {
+            titleInput = wrapper.find('input[name="title"]');
+            playerCountInput = wrapper.find('input[name="player_count"]');
+            form = wrapper.find('form');
+        });
+
+        it('that prevent default after submiting form', () => {
+            titleInput.simulate('change', { target: { name: 'title', value: 'test title' }});
+            playerCountInput.simulate('change', { target: { name: 'player_count', value: 2 }});
+            form.simulate('submit', { preventDefault });
+    
+            expect(preventDefault).toHaveBeenCalledTimes(1);
+        });
+    
+        it('that reset state after submitting form', () => {
+            titleInput.simulate('change', { target: { name: 'title', value: 'test title' }});
+            playerCountInput.simulate('change', { target: { name: 'player_count', value: 2 }});
+
+            expect(wrapper.state()).toEqual({
+                title: 'test title',
+                player_count: 2
+            });
+
+            form.simulate('submit', { preventDefault });
+        
+            expect(wrapper.state()).toEqual({ 
+                title: '', 
+                player_count: ''
+            });  
+        });
+    
+        it('that call createGame prop after submitting form', () => {
+            form.simulate('submit', { preventDefault });
+            
+            expect(createGame).toHaveBeenCalledTimes(1);
+        });
+    })
 });
