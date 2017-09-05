@@ -7,16 +7,9 @@ import {
   fetchingGamesFailure 
 } from '../../redux/modules/Games/actions';
 import { Link } from 'react-router-dom';
+import NewGameForm from './NewGameForm';
 
 class Games extends Component { 
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      inputValue: '',
-    }
-  }
   
   componentDidMount() {
     const { setGames, fetchingGames, fetchingGamesFailure } = this.props
@@ -38,8 +31,8 @@ class Games extends Component {
         }
       },
 
-      createGame(title) {
-        this.perform('create_game', { title: title });
+      createGame(game) {
+        this.perform('create_game', game);
         fetchingGames()
       },
 
@@ -57,19 +50,7 @@ class Games extends Component {
     this.subscription && this.cable.subscriptions.remove(this.subscription);
   }
 
-  handleOnSubmit = (event) => {
-    event.preventDefault()
-    this.subscription.createGame(this.state.inputValue);
-    this.setState({
-      inputValue: ''
-    })
-  }
-
-  handleOnChange(event) {
-    this.setState({
-      inputValue: event.target.value
-    })
-  }
+  createGame = game => this.subscription.createGame(game);
 
   render() {
 
@@ -77,10 +58,8 @@ class Games extends Component {
 
     return(
       <div>
-        <h1>Games Channel</h1>
-        <form onSubmit={this.handleOnSubmit}> 
-          <input onChange={(event) => this.handleOnChange(event)} value={this.state.inputValue} />
-        </form>
+        <h1>Game Rooms</h1>
+        <NewGameForm createGame={this.createGame} />
         {renderGames}
       </div>
     )
