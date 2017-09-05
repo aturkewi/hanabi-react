@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import Navbar from '../../components/Navbar';
-jest.mock('aphrodite/lib/inject');
 
 describe('Navbar', () => {
   let wrapper; 

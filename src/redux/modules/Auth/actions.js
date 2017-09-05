@@ -15,9 +15,9 @@ export const authenticationRequest = () => {
   return { type: 'AUTHENTICATION_REQUEST' };
 }
 
-export const logout = (router) => {
+export const logout = (routerHistory) => {
   localStorage.removeItem('token');
-  router.history.replace('./login');
+  routerHistory.replace('./login');
   return { type: 'LOGOUT' };
 }
 
@@ -29,7 +29,7 @@ export const authenticationFailure = () => {
  * @param {Auth} async actions
  */
 
-export const signup = (user, router) => {
+export const signup = (user, routerHistory) => {
   return dispatch => {
     dispatch(authenticationRequest());
     return ApiService.post('/users', user)
@@ -38,7 +38,7 @@ export const signup = (user, router) => {
         localStorage.setItem('token', token);
         dispatch(setCurrentUser(user));
         dispatch(reset('signup'));
-        router.history.replace('/games');
+        routerHistory.replace('/games');
       })
       .catch((err) => {
         throw new SubmissionError(err)
@@ -46,7 +46,7 @@ export const signup = (user, router) => {
   }
 }
 
-export const login = (user, router) => {
+export const login = (user, routerHistory) => {
   return dispatch => {
     dispatch(authenticationRequest()); 
     return ApiService.post('/auth', user)
@@ -55,7 +55,7 @@ export const login = (user, router) => {
         localStorage.setItem('token', token);
         dispatch(setCurrentUser(user))
         dispatch(reset('login'));
-        router.history.replace('/games');
+        routerHistory.replace('/games');
       })
       .catch((err) => {
         throw new SubmissionError(err)

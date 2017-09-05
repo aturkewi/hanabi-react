@@ -1,28 +1,16 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import { NavLink } from 'react-router-dom';
-
-type Props = {
-  isAuthenticated: boolean,
-  logout: () => void,
-}
+import { NavLink, withRouter } from 'react-router-dom';
 
 class Navbar extends Component {
 
-  static contextTypes = {
-    router: PropTypes.object,
-  }
-
-  props: Props
-
   handleLogout = event => {
     event.preventDefault();
-    this.props.logout(this.context.router);
+    this.props.logout(this.props.history);
   }
 
   render() {
-    const { pathname } = this.context.router.route.location;
-    console.log(pathname)
+    const { pathname } = this.props.location;
     const { isAuthenticated } = this.props;
 
     return (
@@ -48,4 +36,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);

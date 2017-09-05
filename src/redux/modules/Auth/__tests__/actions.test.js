@@ -24,11 +24,9 @@ window.localStorage = (() => {
 
 const middlewares = [ thunk ]; 
 const mockStore = configureMockStore(middlewares);
-const router = {
-  history: {
-    replace: jest.fn()
-  }
-}
+const routerHistory = {
+  replace: jest.fn()
+};
 
 describe('Auth Module action creators', () => {
 
@@ -36,31 +34,30 @@ describe('Auth Module action creators', () => {
 
     it('creates an action to authenticate request', () => {
       expect(actions.authenticationRequest()).toEqual({ type: 'AUTHENTICATION_REQUEST' });
-    })
-  })
+    });
+  });
 
   describe('setCurrentUser(user)', () => {
 
     it('creates an action to set current user', () => {
       expect(actions.setCurrentUser({ username: 'billy' })).toEqual({ type: 'AUTHENTICATION_SUCCESS', user: { username: 'billy' }});
-    })
-  })
+    });
+  });
 
   describe('logout(router)', () => {
 
     it('creates an action to logout a user', () => {
-      expect(actions.logout(router)).toEqual({ type: 'LOGOUT' });
-    })
-  })
+      expect(actions.logout(routerHistory)).toEqual({ type: 'LOGOUT' });
+    });
+  });
 
   describe('authenticationFailure()', () => {
 
     it('creates an action for authentication failure', () => {
       expect(actions.authenticationFailure()).toEqual({ type: 'AUTHENTICATION_FAILURE' });
-    })
-  })
-  
-})
+    });
+  });
+});
 
 describe('Auth Module async actions', () => {
   let initialState;
@@ -85,13 +82,13 @@ describe('Auth Module async actions', () => {
       user,
       token: 'abc.123.def.456',
     }
-  })
+  });
 
   afterEach(() => {
-    nock.cleanAll()
-  })
+    nock.cleanAll();
+  });
 
-  describe('signup(data, router)', () => {
+  describe('signup(data, routerHistory)', () => {
     
     it('creates an AUTHENTICATION_REQUEST and an AUTHENTICATION_SUCCESS when creating a user', () => {
 
@@ -109,16 +106,16 @@ describe('Auth Module async actions', () => {
           email: 'bill@gmail.com',
           password: 'password'
         }
-      }, router))
+      }, routerHistory))
         .then(() => expect(store.getActions()).toEqual([
           { type: 'AUTHENTICATION_REQUEST' },
           { type: 'AUTHENTICATION_SUCCESS', user },
           { meta: { form: "signup" }, type: "@@redux-form/RESET" }
         ]));
-    })
-  })
+    });
+  });
 
-  describe('login(data, router)', () => {
+  describe('login(data, routerHistory)', () => {
 
     it('creates an AUTHENTICATION_REQUEST and an AUTHENTICATION_SUCCESS when creating a user', () => {
 
@@ -133,14 +130,14 @@ describe('Auth Module async actions', () => {
           username: 'billy', 
           password: 'password'
         }
-      }, router))
+      }, routerHistory))
         .then(() => expect(store.getActions()).toEqual([
           { type: 'AUTHENTICATION_REQUEST' },
           { type: 'AUTHENTICATION_SUCCESS', user },
           { meta: { form: "login" }, type: "@@redux-form/RESET" }
         ]));
-    })
-  })
+    });
+  });
 
   describe('authenticate()', () => {
 
@@ -157,7 +154,6 @@ describe('Auth Module async actions', () => {
           { type: 'AUTHENTICATION_REQUEST' },
           { type: 'AUTHENTICATION_SUCCESS', user }
         ]));
-    })
-  })
-  
-})
+    });
+  });
+});
