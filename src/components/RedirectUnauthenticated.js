@@ -10,7 +10,7 @@ type Props = {
   isAuthenticating: boolean,
 }
 
-const RedirectAuthenticated = ({
+const RedirectUnauthenticated = ({
   path,
   exactly,
   isAuthenticated,
@@ -27,4 +27,4 @@ const RedirectAuthenticated = ({
     }}
   />;
 
-export default RedirectAuthenticated;
+export default RedirectUnauthenticated;

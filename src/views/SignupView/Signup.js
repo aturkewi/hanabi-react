@@ -23,6 +23,6 @@ class Signup extends Component {
       </div>
     );
   }
-}
+};
 
 export default connect(null, { signup })(Signup);

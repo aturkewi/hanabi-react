@@ -10,10 +10,10 @@ import { authenticate, authenticationFailure, logout } from '../redux/modules/Au
 import Navbar from '../components/Navbar';
 import MatchAuthenticated from '../components/MatchAuthenticated';
 import RedirectUnauthenticated from '../components/RedirectUnauthenticated';
-import Games from '../views/Games';
-import GameDashboard from '../views/GameDashboard';
-import Signup from '../views/Signup';
-import Login from '../views/Login';
+import Games from '../views/GamesView/Games';
+import GameDashboard from '../views/GameDashboardView/GameDashboard';
+import Signup from '../views/SignupView/Signup';
+import Login from '../views/LoginView/Login';
 import NotFound from '../components/NotFound';
 
 type Props = {

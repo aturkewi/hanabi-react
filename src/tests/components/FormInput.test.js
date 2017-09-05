@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FormInput from '../../FormInput';
+import FormInput from '../../components/FormInput';
 
 const props = {
   input: {
@@ -26,15 +26,15 @@ describe('Input', () => {
     expect(wrapper).toBeDefined();
   })
 
-  it('wraps content in a div with .signup class', () => {
-    expect(wrapper.find('div.input').length).toEqual(1);
+  it('wraps content in a div.uk-margin', () => {
+    expect(wrapper.find('div.uk-margin').length).toEqual(1);
   })
 
-  it('contains an input tag with props for input, type & placeholder', () => {
-    const input = wrapper.find('Input');
+  it('contains an input tag with props for input, type & placeholder and .uk-input class', () => {
+    const input = wrapper.find('input');
     expect(input.length).toEqual(1);
     expect(input.props()).toEqual({
-      name: 'name', type: '', placeholder: ''
+      className: 'uk-input', name: 'name', type: '', placeholder: ''
     })
   })
 
@@ -57,12 +57,12 @@ describe('Input', () => {
       wrapper = shallow(<FormInput {...errorProps} />);
     })
 
-    it('renders a div with .form_error class', () => {
-      expect(wrapper.find('div.form_error').length).toEqual(1);
+    it('renders a div.uk-alert-danger', () => {
+      expect(wrapper.find('div.uk-alert-danger').length).toEqual(1);
     })
 
     it('renders the the error message', () => {
-      expect(wrapper.find('div.form_error').childAt(0).text()).toEqual('Name is required!');
+      expect(wrapper.find('div.uk-alert-danger').childAt(0).text()).toEqual('Name is required!');
     })
   })
 })
