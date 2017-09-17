@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './Card'
 import Hand from './Hand'
+import VisibleCardGroup from './VisibleCardGroup.jsx'
 
 const ActiveGame = (props) => {
 
@@ -19,6 +20,7 @@ const ActiveGame = (props) => {
             Misses remaining: { props.game.miss_counter }
           </li>
         </ul>
+        < VisibleCardGroup cards={props.game.played} />
         <h2>It is currently {props.currentPlayer.username} turn</h2>
         <h2>Players</h2>
         <ul>
